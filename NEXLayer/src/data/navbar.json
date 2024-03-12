@@ -1,0 +1,15 @@
+{
+    "menuItems": [
+      {
+        "title": "Home",
+        "href":"/"
+      
+      },
+      {
+        "title": "Stake",
+        "href":"/stake"
+
+      }
+    ]
+  }
+  

@@ -1,0 +1,46 @@
+{
+  "name": "nexus",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@3rdweb/hooks": "^1.9.2",
+    "@faker-js/faker": "^8.4.1",
+    "@headlessui/react": "^1.7.18",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "@thirdweb-dev/react": "^4.4.15",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "ethers": "^5.7.2",
+    "framer-motion": "^11.0.8",
+    "icons": "^1.0.0",
+    "mini-svg-data-uri": "^1.4.4",
+    "next": "13.5.4",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.0",
+    "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "react-table": "^7.8.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-ripple": "^0.7.1",
+    "yet-another-react-lightbox": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-table": "^7.7.19",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  }
+}
