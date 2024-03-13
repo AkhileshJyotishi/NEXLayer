@@ -41,7 +41,7 @@ contract Staking is ReentrancyGuard {
     modifier updateReward() {
         s_rewardPerTokenStored = rewardPerToken();
         s_lastUpdateTime = block.timestamp;
-        // s_rewards[msg.sender] = earned(msg.sender);
+        s_rewards[msg.sender] = earned(msg.sender);
         s_userRewardsPerToken_Paid[msg.sender] = s_rewardPerTokenStored;
         _;
     }
@@ -89,7 +89,8 @@ contract Staking is ReentrancyGuard {
         s_userStakedAmount[msg.sender]=msg.value;
         // StackingAmount=msg.value;
         require(sent, "Failed to send Ether");
-        myToken.mint(msg.sender, msg.value);
+        uint256 y=(93)*(msg.value)/100;
+        myToken.mint(msg.sender, y);
         // emit event
         emit Staked(msg.sender, msg.value);
     }
@@ -105,7 +106,7 @@ contract Staking is ReentrancyGuard {
         external
         updateReward()
         // needMoreThanZero()
-    {   if( unboundingPeriod!=1e18){
+    {   if( unboundingPeriod!=1e18 && s_userStakedAmount[msg.sender]>=amount){
         withdrawTimeStamp[msg.sender] = block.timestamp;
         s_userStakedAmount[msg.sender] =
             s_userStakedAmount[msg.sender] -

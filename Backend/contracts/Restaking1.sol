@@ -26,7 +26,7 @@ contract Restaking1 {
     modifier updateReward() {
         s_rewardPerTokenStored = rewardPerToken();
         s_lastUpdateTime = block.timestamp;
-        // s_rewards[msg.sender] = earned(msg.sender);
+        s_rewards[msg.sender] = earned(msg.sender);
         s_userRewardsPerToken_Paid[msg.sender] = s_rewardPerTokenStored;
         _;
     }
