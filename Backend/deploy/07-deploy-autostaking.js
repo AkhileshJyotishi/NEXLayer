@@ -9,7 +9,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const chainId=network.config.chainId
     const Autostaking=await deploy("Autostaking",{
         from:deployer,
-        args:["0x5b052A4ef37e5Bb53cfC689C2767f4a8Fc375084","0x7e5d8f52054170b2f556d633cd76a207177Ec7fb","0xEa7f8c0c39d5F9A5AcA465C6B083710De1917196","0x9f5da4e576346Ab03C2dcD451501092e3c78E58C"],
+        args:["0x5b052A4ef37e5Bb53cfC689C2767f4a8Fc375084","0x7e5d8f52054170b2f556d633cd76a207177Ec7fb","0xEa7f8c0c39d5F9A5AcA465C6B083710De1917196","0xc56108Dfc6D013C78e5E87fbA488ae19Bc2B8F2D"],
         log:true,
         waitConfirmations:network.config.blockConfirmations || 1,
     })

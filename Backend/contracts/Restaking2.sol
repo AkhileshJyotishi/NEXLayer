@@ -60,8 +60,6 @@ contract Restaking2 {
           myToken.mint(address(this), _amount);
         myToken.burn(msg.sender, _amount);
         anotherToken.mint(msg.sender, _amount);
-        myToken.mint(address(this), _amount);
-        
     }
 
      function rewardPerToken() public view returns (uint256) {
