@@ -73,10 +73,11 @@ contract Restaking1 {
     }
 
         uint256 public  unstakeTimestamp;
-    function unstake() public {
+    function unstake(uint256 amount) public {
             require(s_userStakedAmount[msg.sender] >=0, "No amount staked");
             unstakeTimestamp=block.timestamp;
             unboundingPeriod=1000;
+             emit WithdrewStake(msg.sender,  amount);
     }
 
     function withdraw(uint256 amount)
@@ -89,8 +90,9 @@ contract Restaking1 {
             s_userStakedAmount[msg.sender] -
             amount;
         s_totalSupply = s_totalSupply - amount;
-        emit WithdrewStake(msg.sender, amount);
+        emit RewardsClaimed(msg.sender, amount);
         myToken.mint(msg.sender, (((amount * (1)) / 10) + amount));
+        myToken.burn(msg.sender,amount);
     }
     else{
         revert unstakeNot_called();

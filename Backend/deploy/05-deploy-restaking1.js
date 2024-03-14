@@ -9,7 +9,7 @@ module.exports=async({getNamedAccounts,deployments})=>{
     const chainId=network.config.chainId
     const Restaking1=await deploy("Restaking1",{
         from:deployer,
-        args:["0x5b052A4ef37e5Bb53cfC689C2767f4a8Fc375084","0x7e5d8f52054170b2f556d633cd76a207177Ec7fb"],
+        args:["0x4d2A311a9F1e5dD098489395d3FBd5b609d4f093","0x8B802aaAdCD2dFA3ae6aAADF1Ff471747e8359F0"],
         log:true,
         waitConfirmations:network.config.blockConfirmations || 1,
     })

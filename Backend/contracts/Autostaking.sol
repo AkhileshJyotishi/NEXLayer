@@ -35,7 +35,7 @@ contract Autostaking {
 
         // Assuming ReStaking's stake function also requires ether
         (success, ) = address(restaking1).call{value: msg.value / 2}(
-            abi.encodeWithSignature("stake()")
+            abi.encodeWithSignature("transferTokens()")
         );
         require(success, "ReStaking failed");
     }

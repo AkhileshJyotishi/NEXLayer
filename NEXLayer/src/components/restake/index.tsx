@@ -97,7 +97,6 @@ const Stake: React.FC = () => {
           {/* <StakeInfo title="estimated gas fee" value={award} /> */}
           <StakeInfo title="Staked Amount" value={award} />
         </div>
-
       </div>
     </>
   );

@@ -13,7 +13,7 @@ contract Staking is ReentrancyGuard {
         myToken = _token;
     }
     event Staked(address indexed user, uint256 indexed amount);
-    event WithdrewStake(address indexed user, uint256 indexed amount);
+    event WithdrewStake(address indexed user, uint256 indexed amount,uint256 indexed timstamp);
     event RewardsClaimed(address indexed user, uint256 indexed amount);
     uint256 public RewardRate=100;
     uint256 public s_totalSupply;
@@ -27,7 +27,6 @@ contract Staking is ReentrancyGuard {
     mapping(address => uint256) s_userRewardsPerToken_Paid;
     mapping(address => uint256) withdrawTimeStamp;
     mapping (address=>uint256) public StakersBalance;
-
     error stake__transferFailed();
     error withdraw__transferFailed();
     error claimReward__transferFailed();
@@ -96,10 +95,11 @@ contract Staking is ReentrancyGuard {
     }
 
     uint256 public  unstakeTimestamp;
-    function unstake() public {
+    function unstake(uint256 amount) public {
             require(s_userStakedAmount[msg.sender] >=0, "No amount staked");
             unstakeTimestamp=block.timestamp;
             unboundingPeriod=1000;
+            emit WithdrewStake(msg.sender, amount, block.timestamp);
     }
 
     function withdraw(uint256 amount)
@@ -112,12 +112,13 @@ contract Staking is ReentrancyGuard {
             s_userStakedAmount[msg.sender] -
             amount;
         s_totalSupply = s_totalSupply - amount;
-        emit WithdrewStake(msg.sender, amount);
+        myToken.burn(msg.sender,amount);
+        // emit WithdrewStake(msg.sender, amount);
+        emit RewardsClaimed(msg.sender,amount);
         myToken.mint(msg.sender, (((amount * (1)) / 10) + amount));
     }
     else{
         revert unstakeNot_called();
     }
     }
-
 }
