@@ -11,7 +11,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
 
 
   return (
-    <div className="mt-24 z-40 w-11/12 h-full sm:w-[90%] sm:h-[90%] my-auto rounded-md backdrop-blur-sm  border border-blue-300  mx-auto p-1 sm:p-4 text-white shadow-md">
+    <div className="mt-24 z-40 w-11/12 h-full sm:w-[90%] sm:h-[90%] my-auto rounded-md     mx-auto p-1 sm:p-4 text-white shadow-md">
       <Tabs defaultValue={tabs[0].value} className="  sm:flex sm:flex-col h-full ">
         <TabsList className="flex gap-4  sm:flex-row w-full">
           {tabs.map((tab) => (

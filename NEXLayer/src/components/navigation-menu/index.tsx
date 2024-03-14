@@ -5,6 +5,10 @@ import { cn } from "@/utils/cn";
 import data from "@/data/navbar.json";
 import Button from "../ui/button";
 import {ethers} from "ethers"
+import Image from "next/image";
+import Logo from "@/assets/logo-no-background.svg";
+import { toast } from "react-toastify";
+
 declare var window: any
 
 interface MenuItem {
@@ -30,7 +34,7 @@ export function NavbarDemo() {
 
 
   return (
-      <Navbar className="top-2" />
+      <Navbar className="top-4" />
   );
 }
 
@@ -60,6 +64,8 @@ function Navbar({ className }: { className?: string }) {
     } else {
       /* MetaMask is not installed */
       console.log("Please install MetaMask");
+      toast.info("Please install MetaMask");
+
     }
   };
 
@@ -89,6 +95,7 @@ function Navbar({ className }: { className?: string }) {
     } else {
       /* MetaMask is not installed */
       console.log("Please install MetaMask");
+      toast.info("Please install MetaMask");
     }
   };
 
@@ -96,12 +103,13 @@ function Navbar({ className }: { className?: string }) {
   return (
     <div className={cn("fixed top-10 inset-x-0 max-w-[64rem] mx-auto z-50", className)}>
       <Menu setActive={setActive}>
+        <Image src={Logo} alt="" width={200} height={400} className="h-6 " />
         {data.menuItems.map((item, index) => (
           <MenuItem key={index} setActive={setActive} active={active} item={item.title} href={item.href} />
 
         ))}
         {
-          walletAddress ? (<div className="text-white w-[130px] ">{walletAddress.substring(0,7)+"...."+walletAddress.substring(walletAddress.length-4,walletAddress.length-1)} </div> ):(
+          walletAddress ? (<div className="text-xl font-bold text-white w-[130px] ">{walletAddress.substring(0,7)+"...."+walletAddress.substring(walletAddress.length-4,walletAddress.length-1)} </div> ):(
             <Button  className={"text-white"} onClick={()=>connectWallet()}>Connect</Button>
           )
         }

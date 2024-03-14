@@ -4,31 +4,27 @@ import {
   useSortBy,
   usePagination,
 } from "react-table";
-import React, { useMemo,  useCallback } from "react";
+import React, { useMemo,  useCallback, useEffect } from "react";
 import rewardData from "@/data/reward.json";
 import {
   FaSearch,
-  FaChevronLeft,
-  FaChevronRight,
   FaSortUp,
   FaSortDown,
 } from "react-icons/fa";
 import Image from "next/image";
 import Button from "../ui/button";
+import { ethers } from "ethers";
+declare var window: any
+import stakeData from '@/data/stake.json';
+import { toast } from "react-toastify";
 
 
 
-interface AvatarProps {
-    src?: string;
-    alt?: string;
-  }
-  
-  const Avatar: React.FC<AvatarProps> = ({ src = "", alt = "avatar" }) => {
-    return (
-      <Image src={src} alt={alt} width={400} height={400} className="w-8 h-8 rounded-full object-cover" />
-    );
-  }
-  
+
+
+
+
+
   interface GlobalSearchFilterProps {
     globalFilter: string;
     setGlobalFilter: React.Dispatch<React.SetStateAction<string>>;
@@ -247,10 +243,77 @@ const getColumns = () => [
 ];
 
 const handleClaim = (row:any) => {
+  const arr:string[]=[]
+  row.cells.map((cell:any) => {
+    if(cell.value!==undefined) arr.push(cell.value)
+  })
+handleClaimCFX(arr)
+
+console.log("CHECK ",arr)
   // Handle claim action here
 };
 
+const handleClaimCFX = async (arr:string[]) => {
+  // handle unstake CFX
+  try {
+    if(window.ethereum !== "undefined"){
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+
+        const contract = new ethers.Contract(stakeData.addressStake, stakeData.abiStake, signer);
+
+        const amountWei = ethers.utils.parseEther(arr[0].toString());
+        
+        const transaction = await contract.withdraw(amountWei);  
+       
+        await listenForTransactionMined(transaction, provider);
+        console.log("Unstaked successfully !!!");
+
+    }else{
+        console.log("Please Connect Wallet !!!")
+    }
+} catch (error) {
+    toast.warning("Please enter the amount to unstake1");
+    
+}
+}
+function listenForTransactionMined(transactionResponse: any, provider: any) {
+  try {
+    //listen for this transaction to be finished
+    return new Promise((resolve, reject) => {
+      provider.once(transactionResponse.hash, (transactionReciept: any) => {
+        console.log(`Completed with ${transactionReciept.confirmations}`);
+        resolve(transactionReciept);
+      });
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function Table1Presentation() {
+  useEffect(() => {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      
+      const contractRestake = new ethers.Contract(stakeData.addressStake, stakeData.abiStake, signer);
+      const filter = contractRestake.filters.WithdrewStake();
+      
+      contractRestake.on(filter, (event) => {
+        // Handle the received event data
+        console.log("wroking ")
+        console.log(event);
+      })
+      contractRestake.on("WithdrewStake", (event) => {
+        // Handle the received event data
+        console.log("wroking ")
+        console.log(event);
+      })
+    }
+  }, []);
   return (
     <div className="flex flex-col  py-4 sm:py-0 mt-8 overflow-y-scroll w-full grow h-[200px] max-h-[500px]">
       <Table1 />
