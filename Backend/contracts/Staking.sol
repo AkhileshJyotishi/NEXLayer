@@ -102,6 +102,7 @@ contract Staking is ReentrancyGuard {
             emit WithdrewStake(msg.sender, amount, block.timestamp);
     }
 
+
     function withdraw(uint256 amount)
         external
         updateReward()
@@ -121,4 +122,19 @@ contract Staking is ReentrancyGuard {
         revert unstakeNot_called();
     }
     }
+
+    function getTotalSupply() public view returns(uint256){
+        return s_totalSupply;
+    }
+     function getRewardsPerTokenShared() public view returns(uint256){
+        return s_rewardPerTokenStored;
+    }
+     function getUserBalance() public view returns(uint256){
+        return s_userStakedAmount[msg.sender];
+    }
+
+     function getUserRewardsPerToken() public view returns(uint256){
+        return s_userRewardsPerToken_Paid[msg.sender];
+    }
+
 }

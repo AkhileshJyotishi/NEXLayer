@@ -104,4 +104,17 @@ contract Restaking1 {
     function mintTokensForStacker(uint256 amount) public  {
             myToken.mint(msg.sender, amount);
     }
+    function getTotalSupply() public view returns(uint256){
+        return s_totalSupply;
+    }
+     function getRewardsPerTokenShared() public view returns(uint256){
+        return s_rewardPerTokenStored;
+    }
+     function getUserBalance() public view returns(uint256){
+        return s_userStakedAmount[msg.sender];
+    }
+
+     function getUserRewardsPerToken() public view returns(uint256){
+        return s_userRewardsPerToken_Paid[msg.sender];
+    }
 }
