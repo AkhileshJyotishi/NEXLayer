@@ -35,7 +35,7 @@ const handleUnstakeCFX = async () => {
 
         // const amountWei = ethers.utils.parseEther(stake.toString());
         
-        const transaction = await contract.unstake();  
+        const transaction = await contract.unstake(stake);  
         // burn xcfx ---- pending
 
         await listenForTransactionMined(transaction, provider);
@@ -45,7 +45,7 @@ const handleUnstakeCFX = async () => {
         console.log("Please Connect Wallet !!!")
     }
 } catch (error) {
-    toast.warning("Please enter the amount to unstake");
+    toast.warning("Please enter the amount to unstake2");
     
 }
 }

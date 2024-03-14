@@ -274,7 +274,7 @@ const handleClaimCFX = async (arr:string[]) => {
         console.log("Please Connect Wallet !!!")
     }
 } catch (error) {
-    toast.warning("Please enter the amount to unstake");
+    toast.warning("Please enter the amount to unstake1");
     
 }
 }
