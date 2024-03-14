@@ -184,6 +184,7 @@ const Table1: React.FC = () => {
       {
         columns,
         data,
+        // @ts-ignore
         initialState: { pageSize: 5 },
       },
       useGlobalFilter,
