@@ -1,33 +1,8 @@
 [
     {
-        "accountNumber": "12345678",
-      "claimedDate": "John's Account",
+        "accountNumber": "5",
+      "claimedDate": "15-3-2024",
       "amount": "1.00"
-    },
-    {
-      "accountNumber": "87654321",
-      "claimedDate": "Jane's Account",
-      "amount": "2000.00"
-    },
-    {
-      "accountNumber": "12345678",
-      "claimedDate": "John's Account",
-      "amount": "1000.00"
-    },
-    {
-      "accountNumber": "87654321",
-      "claimedDate": "Jane's Account",
-      "amount": "2000.00"
-    },
-    {
-      "accountNumber": "12345678",
-      "claimedDate": "John's Account",
-      "amount": "1000.00"
-    },
-    {
-      "accountNumber": "87654321",
-      "claimedDate": "Jane's Account",
-      "amount": "2000.00"
     }
   ]
   

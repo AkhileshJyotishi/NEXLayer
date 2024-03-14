@@ -110,7 +110,7 @@ function Navbar({ className }: { className?: string }) {
         ))}
         {
           walletAddress ? (<div className="text-xl font-bold text-white w-[130px] ">{walletAddress.substring(0,7)+"...."+walletAddress.substring(walletAddress.length-4,walletAddress.length-1)} </div> ):(
-            <Button  className={"text-white"} onClick={()=>connectWallet()}>Connect</Button>
+            <Button  className={"cursor-pointer text-xl font-bold hover:opacity-[0.9] text-white"} onClick={()=>connectWallet()}>Connect</Button>
           )
         }
       </Menu>

@@ -25,9 +25,7 @@ const CustomComponent: React.FC<CustomComponentProps> = ({ cursorX, cursorY, tit
         </div>
         <h3 className="text-zinc-100 font-semibold">{title}</h3>
         <p className="text-zinc-300">{description}</p>
-        <div>
-          <img alt="Float UI" loading="lazy" width="363" height="172" decoding="async" data-nimg="1" className="absolute inset-0 -z-10" style={{color: 'transparent'}} src={imageSrc} />
-        </div>
+       
       </div>
       <div className="bg-[linear-gradient(180deg,_#1E293B_0%,_rgba(59,_130,_246,_0.00)_137.53%,_rgba(32,_69,_129,_0.00)_195%)] blur-[70px] opacity-0 absolute top-0 left-0 w-4/5 h-4/5 duration-150 group-hover:opacity-90" style={{top: cursorY, left: cursorX, transform: 'translate(-50%, -50%)'}}></div>
       <div className="absolute inset-[1px] -z-10 rounded-xl bg-zinc-950"></div>

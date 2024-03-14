@@ -58,10 +58,13 @@ const Stake: React.FC = () => {
   const [stake, setStake] = useState<number>(10);
   const [installMetaMask, setInstallMetaMask] = useState<boolean>(false);
   const [award, setAward] = useState<number>(0);
-  const [balance, setBalance] = useState<number>(0);  
+  const [balance, setBalance] = useState<number>(0.002259);  
+  const [availableBalance, setAvailableBalance] = useState<number>(889.9324);
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [exchange, setExchange] = useState<string>("100%");
   const [stakeError, setStakeError] = useState("");
+  const [conversionRate]=useState<number>(0.93);
+
   const [handleAutoRestakeOpen, setAutoRestakeOpen]=useState(false);
   const [open, setOpen] = useState(false);
   const [provider, setProvider] = useState<ethers.providers.Web3Provider | undefined>(undefined)
@@ -175,6 +178,19 @@ setLoading(false);
     }
   
   }
+const getBalance=async()=>{
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  let addresses = window.ethereum.request({ method: "eth_requestAccounts" });
+let bal=await provider.getBalance(addresses[0]);
+let x=(ethers.utils.formatEther(bal))
+console.log(x)
+setAvailableBalance(+x);
+
+}
+useEffect(()=>{
+  // getBalance()
+},[])
+
   return (
     <>
       <Loader loadingStates={loadingStates} loading={loading} duration={2000} />
@@ -197,7 +213,7 @@ setLoading(false);
         message="Are you sure you want to opt for Auto Restake? This action cannot be undone."
         buttonText="Auto Stake"
       />
-      <div className='flex flex-col gap-12 w-full sm:h-full sm:w-4/5 mx-auto p-4  rounded-md mt-4'>
+      <div className='flex flex-col gap-12 w-full sm:h-full sm:w-4/5 mx-auto p-4  rounded-md mt-4 bg-black/30 border border-purple-600'>
 
         <div className='flex flex-col gap-6 w-full sm:w-3/5 sm:mx-auto justify-between mt-16'>
           <div className='w-full  bg-gradient-to-r from-indigo-500 to-purple-500  flex flex-col gap-4 p-4 rounded-md'>
@@ -239,7 +255,7 @@ setLoading(false);
               Available Balance 
               </div>
               <div>
-                {balance}
+                {availableBalance}
               </div>
             </div>
             <div className='p-2 font-semibold flex justify-between '>
@@ -291,7 +307,7 @@ setLoading(false);
               Conversion Rate
               </div>
               <div>
-                {balance}
+                {conversionRate}
               </div>
             </div>
           </div>

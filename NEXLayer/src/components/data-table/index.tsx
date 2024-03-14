@@ -301,17 +301,15 @@ function Table1Presentation() {
       
       const contractRestake = new ethers.Contract(stakeData.addressStake, stakeData.abiStake, signer);
       const filter = contractRestake.filters.WithdrewStake();
-      
+      window.addEventListener("WithdrewStake", (e:any) => {
+        console.log(e);
+      })  
       contractRestake.on(filter, (event) => {
         // Handle the received event data
         console.log("wroking ")
         console.log(event);
       })
-      contractRestake.on("WithdrewStake", (event) => {
-        // Handle the received event data
-        console.log("wroking ")
-        console.log(event);
-      })
+     
     }
   }, []);
   return (

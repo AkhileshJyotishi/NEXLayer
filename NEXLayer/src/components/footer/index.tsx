@@ -3,14 +3,14 @@ import Link from "next/link";
 import React from "react";
 import { FaDribbble, FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
+import Image from "next/image";
+import Logo from "@/assets/logo-no-background.svg";
 
 const footerLinks = [
-    { title: "About", url: "#" },
-    { title: "Careers", url: "#" },
-    { title: "History", url: "#" },
+    { title: "About", url: "/about" },
+    { title: "Stake", url: "/stake" },
     { title: "Services", url: "#" },
-    { title: "Projects", url: "#" },
-    { title: "Blog", url: "#" }
+    
 ];
 
 const socialMediaIcons = [
@@ -22,7 +22,7 @@ const socialMediaIcons = [
 ];
 
 const FooterLogo = () => {
-    return <div className="flex justify-center text-teal-600">Logo Here</div>;
+    return <Image src={Logo} alt="" width={200} height={400} className="h-6 mx-auto" />;
 };
 
 const FooterLinks = () => {
@@ -30,9 +30,9 @@ const FooterLinks = () => {
         <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
             {footerLinks.map((link, index) => (
                 <li key={index}>
-                    <a className="text-white transition hover:text-white/75" href={link.url}>
+                    <Link  className="text-white transition hover:text-white/75" href={link.url}>
                         {link.title}
-                    </a>
+                    </Link>
                 </li>
             ))}
         </ul>
@@ -68,8 +68,7 @@ export default function Footer() {
             <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
                 <FooterLogo />
                 <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-white">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum
-                    itaque neque.
+                Staking on Autopilot: Liquid Rewards Without the Lockup.
                 </p>
                 <FooterLinks />
                 <SocialMediaIcons />

@@ -24,12 +24,7 @@ const tabsData = [
     value: "Awards",
     label: "Unstake",
     content: <Award/>,
-  },
-  {
-    value: "Swap",
-    label: "Swap",
-    content: <> Make changes to your account here.</>,
-  },
+  }
 ];
 
 const index = () => {
