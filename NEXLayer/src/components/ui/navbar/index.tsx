@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-
 const transition = {
   type: "spring",
   mass: 0.5,
@@ -18,7 +17,7 @@ export const MenuItem = ({
   active,
   item,
   href
- 
+
 }: {
   setActive: (item: string) => void;
   active: string | null;
@@ -26,16 +25,16 @@ export const MenuItem = ({
   children?: React.ReactNode;
   href: string;
 }) => {
-  
+
   return (
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <Link
-href={href}
-        className="cursor-pointer  hover:opacity-[0.9] text-white"
+        href={href}
+        className="cursor-pointer text-xl font-bold hover:opacity-[0.9] text-white"
       >
         {item}
       </Link>
-    
+
     </div>
   );
 };
@@ -50,7 +49,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border  bg-black  border-white/[0.2]  shadow-input flex justify-between space-x-4 px-8 py-6 z-50"
+      className="relative rounded-full border  bg-black  border-white/[0.2]  shadow-input flex justify-around space-x-4 px-8 py-6 z-50"
     >
       {children}
     </nav>

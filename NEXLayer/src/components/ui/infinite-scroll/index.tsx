@@ -1,5 +1,6 @@
 "use client";
 
+import CustomComponent from "@/components/card";
 import { cn } from "@/utils/cn";
 import React, { useEffect, useState } from "react";
 
@@ -87,13 +88,14 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item) => (
           <li
-            className="w-[350px] max-w-full relative rounded-2xl border-[0.1px] border-slate-600 flex-shrink-0  px-8 py-6 md:w-[450px] "
+            className="w-[350px] max-w-full relative rounded-2xl flex-shrink-0  px-8 py-6 md:w-[450px] "
             
             key={item.quote}
           >
        
+       <CustomComponent cursorX='' cursorY='' description={item.quote} imageSrc='' title={item.title}/>
 
-            <blockquote className="flex flex-col gap-8">
+            {/* <blockquote className="flex flex-col gap-8">
               <div
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
@@ -109,7 +111,7 @@ export const InfiniteMovingCards = ({
               <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal ">
                 {item.quote}
               </span>
-            </blockquote>
+            </blockquote> */}
           </li>
         ))}
       </ul>

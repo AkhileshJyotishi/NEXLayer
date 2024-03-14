@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-icons": "^5.0.1",
     "react-table": "^7.8.0",
+    "react-toastify": "^10.0.4",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-ripple": "^0.7.1",
     "yet-another-react-lightbox": "^3.17.0"

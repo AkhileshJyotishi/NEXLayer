@@ -11,6 +11,8 @@ import BluePrint from '@/assets/BluePrint.png'
 import Restaking from '@/assets/Restaking.png'
 import Footer from '@/components/footer'
 import { HoverEffect } from '@/components/our-team'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const artwork = [
   BluePrint
   , Restaking
@@ -56,6 +58,8 @@ export default function Home() {
   return (
 
     <main className="h-full">
+       <ToastContainer />
+
       <NavbarDemo />
       <GridBackground >
 
@@ -79,13 +83,12 @@ export default function Home() {
 
           </div>
           <InfiniteMovingCards items={infiniteScrollData} className='mt-16' direction='left' key={"infinite"} pauseOnHover speed='normal' />
-
           <div className='mt-40'>
             <div className='text-white md:text-6xl text-3xl font-bold mx-auto w-fit capitalize text-center'>
               What do we provide for you
             </div>
             <Artworks artwork={artwork} />
-          </div>
+          C</div>
           <h1 className='w-full text-3xl md:text-6xl text-center text-white mt-20 md:mt-40 font-bold'>
             Meet Our Team
           </h1>

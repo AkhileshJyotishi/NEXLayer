@@ -26,7 +26,7 @@ const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
-<button className="p-[3px] relative">
+<div className="p-[3px] relative">
   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
   <div className="  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
   <TabsPrimitive.Trigger
@@ -38,7 +38,7 @@ const TabsTrigger = React.forwardRef<
     {...props}
   />
   </div>
-</button>
+</div>
 
 ))
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
